@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Script to run c and cpp programs
+FILE=$1
+NAME="$(echo $1 | cut -d '.' -f 1)"
+EXT="$(echo $1 | cut -d '.' -f 2)"
+CPP_EXT="${NAME}_${EXT}"
+
+if [ $# -eq 1 ]; then
+    if [ "$EXT" = 'cpp' ]; then
+        g++ -std=c++17 -o $CPP_EXT $FILE
+        if [ $? -eq 0 ]; then
+            ./${CPP_EXT}
+        fi
+    else
+        gcc -std=c17 -o $NAME $FILE
+        if [ $? -eq 0 ]; then
+            ./${NAME}
+        fi
+    fi
+else
+    echo "Pass only program name :)"
+fi

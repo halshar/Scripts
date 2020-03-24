@@ -2,7 +2,7 @@
 
 # Script to reload an instance of polybar
 if [ -z "$(pidof polybar)" ]; then
-  launchpolybar &
+  notify-send "reloaded polybar" && launchpolybar &
 else
-  polybar-msg cmd restart
+  notify-send "reloaded polybar" && polybar-msg cmd restart
 fi

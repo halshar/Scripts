@@ -1,0 +1,20 @@
+#!/bin/sh
+
+PULSE=true
+
+if [ "$PULSE" = "true" ]; then
+    toggle() { pulsemixer --toggle-mute ;}
+    up() { pulsemixer --change-volume +5 ;}
+    down() { pulsemixer --change-volume -5 ;}
+else
+    toggle() { amixer sset Master toggle ;}
+    up() { amixer sset Master 5%+ ;}
+    down() { amixer sset Mas 5%- ;}
+fi
+
+case "$1" in 
+    toggle) toggle ;;
+    up) up ;;
+    down) down ;;
+esac >/dev/null
+

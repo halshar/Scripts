@@ -13,9 +13,8 @@ if [ "$STATUS" = "Discharging" ]; then
     fi
 
 else
-    STATUS=" ⚡"
+    STATUS="  "
 fi
 
-
-echo $STATUS$CAPACITY
+echo "$STATUS${CAPACITY}%"
 

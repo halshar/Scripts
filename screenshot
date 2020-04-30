@@ -1,11 +1,7 @@
 #!/bin/sh
 
 # Simple script that uses maim to take a screenshot
-output=$HOME/Pictures/Screenshots/"$(date +%Y-%b-%d-%H:%M).png"
-
-menu() {
-    echo "" | dmenu -p "How Long?" | xargs -I _ sleep "_"
-}
+output=$HOME/Pictures/Screenshots/"$(date +%Y-%m-%d-%H:%M).png"
 
 case "$1" in
     "full") maim -u -q "$output" || exit;;

@@ -1,14 +1,11 @@
 #!/bin/sh
 
 # Simple script that uses maim to take a screenshot
-output=$HOME/Pictures/Screenshots/"$(date +%Y-%m-%d-%H:%M).png"
+output=$HOME/Pictures/Screenshots/"$(date +%s_%h_%d_%H:%M:%S).png"
 
 case "$1" in
     "full") maim -u -q "$output" || exit;;
     "select") maim -s -u -q "$output" || exit ;;
-    "fulltime") menu && maim -u -q "$output" || exit ;;
-    "selecttime") menu && maim -s -u -q "$output" || exit ;;
-
 esac
 
 notify-send "Maim" "Screenshot Taken"
